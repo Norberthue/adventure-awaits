@@ -30,8 +30,8 @@ const Register = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [classType, setClassType] = useState<ClassType>('Warrior');
-  
   const [image, setImage] = useState('')
+  
   const { setUser } = useUser();
 
   const [error, setError] = useState('');

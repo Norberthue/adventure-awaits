@@ -19,21 +19,11 @@ type UserContextType = {
     logout: () => void;
 };
 
-const defaultUser: UserData = {
-    userId: '',
-    name: '',
-    class: 'Warrior',
-    image: '',
-    level: 1,
-    hp: 100,
-    gold: 0,
-    inventory: [],
-};
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<UserData | null>(defaultUser);
+    const [user, setUser] = useState<UserData | null>(null);
 
     //load user from local storage 
     useEffect(() => {
