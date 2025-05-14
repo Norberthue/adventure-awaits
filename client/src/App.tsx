@@ -1,11 +1,16 @@
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CharacterCreate from './pages/CharacterCreate';
+
 function App() {
-  
   return (
-    <>
-      <p className='text-2xl text-red-500'>hello adventurer</p>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/create" element={<CharacterCreate />} />
+        {/* Add other routes here */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
