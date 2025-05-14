@@ -1,13 +1,23 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const app = express();
 
-const app = express()
+// Import route files
+const authRoutes = require('./routes/auth');
 
-app.use(cors())
-app.use(express.json())
-const PORT = 8080
+// Middleware
+app.use(cors()); // Allow requests from frontend (e.g., localhost:5173)
+app.use(express.json()); // Parse incoming JSON requests
 
-const characterRoutes = require('./routes/character');
-app.use('/character', characterRoutes);
+// Routes
+app.use(authRoutes); // e.g., /register, /login
 
-app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
+
+// Root route (optional)
+app.get('/', (req, res) => {
+  res.send('API is running...');
+});
+
+// Start server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

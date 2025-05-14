@@ -1,15 +1,19 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CharacterCreate from './pages/CharacterCreate';
+import {Routes, Route } from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import CharacterOverview from './pages/CharacterOverview';
+
 
 function App() {
   return (
-    <Router>
+    
       <Routes>
-        <Route path="/create" element={<CharacterCreate />} />
-        {/* Add other routes here */}
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/characterOverview" element={<CharacterOverview/>} />
       </Routes>
-    </Router>
+    
   );
 }
 
