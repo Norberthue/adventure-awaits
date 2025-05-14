@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useEffect, useState} from 'react';
 import type { ReactNode } from 'react';
 import type { ClassType } from '../types/characters';
 
@@ -16,6 +16,7 @@ type UserData = {
 type UserContextType = {
     user: UserData | null;
     setUser: React.Dispatch<React.SetStateAction<UserData | null>>;
+    logout: () => void;
 };
 
 const defaultUser: UserData = {
@@ -34,8 +35,21 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<UserData | null>(defaultUser);
 
+    //load user from local storage 
+    useEffect(() => {
+        const stored = localStorage.getItem('user')
+        if (stored) {
+            setUser(JSON.parse(stored))
+        }
+    },[])
+
+    const logout = () => {
+        setUser(null);
+        localStorage.removeItem('user');
+    };
+    
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser ,logout}}>
             {children}
         </UserContext.Provider>
     );

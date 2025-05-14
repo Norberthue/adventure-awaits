@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import type { Character, ClassType } from "../types/characters"
+import type { ClassType } from "../types/characters"
 import { useUser } from '../context/UserContext'; // Adjust the path based on your project structure
 import con1Image from '../assets/heroes/con1.png';
 import con2Image from '../assets/heroes/con2.png';
@@ -30,7 +30,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [classType, setClassType] = useState<ClassType>('Warrior');
-  const [userId, setUserId] = useState('123');
+  
   const [image, setImage] = useState('')
   const { setUser } = useUser();
 
@@ -46,9 +46,11 @@ const Register = () => {
         email,
         name,
         password,
-        userId, classType, image
+        classType, 
+        image
       });
       setUser(res.data.newUser.character)
+      localStorage.setItem('user', JSON.stringify(res.data.newUser.character))
       navigate('/characterOverview');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Registration failed');

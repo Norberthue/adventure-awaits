@@ -7,9 +7,9 @@ const router = express.Router();
 const users = [];
 
 router.post('/register', async (req, res) => {
-  const { email, name, password , userId, classType, image} = req.body;
+  const { email, name, password , classType, image} = req.body;
   const id = uuidv4();
-  if (!email || !name || !password) {
+  if (!email || !name || !password || !classType || !image) {
     return res.status(400).json({ message: 'All fields are required.' });
   }
 
