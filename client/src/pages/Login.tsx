@@ -20,7 +20,7 @@ const Login = () => {
         password,
       });
 
-      const userData = res.data.user.character
+      const userData = [res.data.user.character]
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData))
       navigate('/characterOverview');

@@ -31,7 +31,12 @@ router.post('/register', async (req, res) => {
         class: classType,
         image,
         level: 1,
-        hp: 100,
+        vitality: 10,
+        strength: 10,
+        dexterity: 10,
+        intelligence: 10,
+        luck: 10,
+        armor: 10,
         gold: 0,
         inventory: [], 
     }

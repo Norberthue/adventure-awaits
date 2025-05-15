@@ -49,7 +49,7 @@ const Register = () => {
         classType, 
         image
       });
-      setUser(res.data.newUser.character)
+      setUser([res.data.newUser.character])
       localStorage.setItem('user', JSON.stringify(res.data.newUser.character))
       navigate('/characterOverview');
     } catch (err: any) {

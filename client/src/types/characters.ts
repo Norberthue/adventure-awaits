@@ -7,6 +7,13 @@ export interface Character {
   image: string;
   level: number;
   hp: number;
+  vitality: number;
+  strength: number;
+  dexterity: number;
+  intelligence: number;
+  luck: number;
+  attack: number;
+  armor: number;
   gold: number;
   inventory: string[];
 }
