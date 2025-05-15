@@ -94,7 +94,7 @@ const Register = () => {
           >
             <option value="Warrior">Warrior</option>
             <option value="Mage">Mage</option>
-            <option value="Archer">Archer</option>
+            <option value="Hunter">Hunter</option>
           </select>
         </div>
 

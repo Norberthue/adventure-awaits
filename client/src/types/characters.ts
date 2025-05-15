@@ -1,4 +1,4 @@
-export type ClassType = 'Warrior' | 'Mage' | 'Archer';
+export type ClassType = 'Warrior' | 'Mage' | 'Hunter';
 
 export interface Character {
   userId: string;

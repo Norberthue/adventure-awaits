@@ -7,8 +7,6 @@ type UserContextType = {
     user: Character[] | null;
     setUser: React.Dispatch<React.SetStateAction<Character[] | null>>;
     logout: () => void;
-    getHp: (vitality: number) => number;
-    getDamage: (strength: number) => number;
     loading : boolean;
 };
 
@@ -32,16 +30,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.removeItem('user');
     };
 
-    const getHp = (vitality: number) => {
-        return Math.floor((vitality) * 10);
-    }
-
-    const getDamage = (strength: number) => {
-        return Math.floor((strength) * 2);
-    }
-    
     return (
-        <UserContext.Provider value={{ user, setUser , logout, getHp, loading, getDamage }}>
+        <UserContext.Provider value={{ user, setUser , logout, loading,  }}>
             {children}
         </UserContext.Provider>
     );

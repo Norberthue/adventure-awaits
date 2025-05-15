@@ -32,12 +32,12 @@ router.post('/register', async (req, res) => {
         image,
         level: 1,
         vitality: 10,
-        strength: 10,
-        dexterity: 10,
-        intelligence: 10,
-        luck: 10,
-        armor: 10,
-        gold: 0,
+        strength: 20,
+        dexterity: 30,
+        intelligence: 40,
+        luck: 50,
+        armor: 60,
+        gold: 70,
         inventory: [], 
     }
   };
