@@ -38,6 +38,7 @@ router.post('/register', async (req, res) => {
         luck: 50,
         armor: 60,
         gold: 70,
+        experience:0,
         inventory: [], 
     }
   };

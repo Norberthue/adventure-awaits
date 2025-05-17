@@ -15,5 +15,6 @@ export interface Character {
   attack: number;
   armor: number;
   gold: number;
+  experience: number;
   inventory: string[];
 }

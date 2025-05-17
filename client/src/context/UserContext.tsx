@@ -24,7 +24,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
         setLoading(false)
     },[])
-
+    
     const logout = () => {
         setUser(null);
         localStorage.removeItem('user');

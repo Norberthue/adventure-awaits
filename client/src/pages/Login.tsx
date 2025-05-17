@@ -23,7 +23,7 @@ const Login = () => {
       const userData = [res.data.user.character]
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData))
-      navigate('/characterOverview');
+      navigate( '/characterOverview');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed');
     }
