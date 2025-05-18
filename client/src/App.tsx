@@ -4,13 +4,29 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import CharacterOverview from './pages/CharacterOverview';
 import ProtectedRoute from './components/ProtectedRoute';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import PickEnemy from './pages/PickEnemy';
+import Shop from './pages/Shop';
 
 
 function App() {
   return (
+    <div>
+      <Header/>
+      <Sidebar/>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/pickEnemy" element={
+          <ProtectedRoute>
+            <PickEnemy/>
+          </ProtectedRoute>}/>
+
+        <Route path='/shop' element={
+          <ProtectedRoute>
+            <Shop/>
+          </ProtectedRoute>}/>
 
         <Route path="/characterOverview" 
         element={
@@ -20,6 +36,7 @@ function App() {
           } 
         />
       </Routes>
+    </div>
     
   );
 }

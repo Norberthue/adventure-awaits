@@ -1,7 +1,7 @@
 import { getDmg, getHp } from '../utils/characterStatsByClass';
 import { useUser } from '../context/UserContext';
 import { addVit, addStr, addDex, addInt, addLck } from '../utils/addingStats';
-import { getMaxEpxForLevel, calculateExpGain } from '../utils/ExpCalculation';
+import { getMaxEpxForLevel} from '../utils/ExpCalculation';
 
 const CharacterStats = () => {
     const { user, setUser } = useUser()
@@ -69,9 +69,20 @@ const CharacterStats = () => {
                                 <p className='text-[#dfdcd0]'>{player.gold}</p>
                             </div>
                             <div className='flex items-center font-semibold text-xl pl-2 pr-2 pt-1 pb-1 justify-between border-2 border-[#2e2d2b] bg-[#141414] rounded-lg'>
-                                <p className='text-[#b49c76]'>Experience</p>
-                                <p className='text-[#dfdcd0]'>{player.experience}/{getMaxEpxForLevel(player.level)}</p>
-                                <p>{calculateExpGain(player.level)}</p>
+                                <div className="flex flex-col w-full">
+                                    <div className="flex justify-between mb-1">
+                                        <span className="text-[#b49c76]">EXP</span>
+                                        <span className="text-[#dfdcd0] text-sm">{player.experience} / {getMaxEpxForLevel(player.level)}</span>
+                                    </div>
+                                    <div className="w-full bg-[#292827] rounded-full h-4">
+                                        <div
+                                            className="bg-[#f6c945] h-4 rounded-full transition-all duration-300"
+                                            style={{
+                                                width: `${Math.min(100, (player.experience / getMaxEpxForLevel(player.level)) * 100)}%`
+                                            }}
+                                        ></div>
+                                    </div>
+                                </div>   
                             </div>
                         </div>
                     </div>

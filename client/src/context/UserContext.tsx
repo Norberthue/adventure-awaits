@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState} from 'react';
 import type { ReactNode } from 'react';
 import type { Character } from '../types/characters';
+import { useNavigate } from 'react-router-dom';
 
 
 type UserContextType = {
@@ -15,7 +16,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<Character[] | null>([]);
     const [loading, setLoading] = useState(true);
-    
+    const navigate = useNavigate()
     //load user from local storage 
     useEffect(() => {
         const stored = localStorage.getItem('user')
@@ -24,10 +25,11 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
         setLoading(false)
     },[])
-    
+
     const logout = () => {
         setUser(null);
         localStorage.removeItem('user');
+        navigate('/')
     };
 
     return (

@@ -6,7 +6,10 @@ type Props = {
 }
 
 const ProtectedRoute = ({children} : Props) => {
-    const { user } = useUser();
+    const { user, loading } = useUser();
+    if (loading) {
+        return null; // or a loading spinner if you have one
+    }
     if (!user) {
         return <Navigate to={'/'} replace />
     }
