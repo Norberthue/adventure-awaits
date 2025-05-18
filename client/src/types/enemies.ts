@@ -1,6 +1,7 @@
 import type { ClassType } from "./characters";
 
 export interface Enemies {
+  name: string;
   class: ClassType;
   image: string;
   level: number;

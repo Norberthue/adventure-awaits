@@ -1,6 +1,6 @@
  import type { Character } from "../types/characters";
 
- export const addVit = (user: Character[] | null, setUser: React.Dispatch<React.SetStateAction<Character[] | null>>) => {
+ export const addVit = (user: Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => {
     
     if (!user) return;
     const updatedUser = user.map((data) => (data.vitality ? { ...data, vitality: data.vitality + 1 } : data));
@@ -9,7 +9,7 @@
 
 }
 
-export const addStr = (user: Character[] | null, setUser: React.Dispatch<React.SetStateAction<Character[] | null>>) => {
+export const addStr = (user: Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => {
     
     if (!user) return;
     const updatedUser = user.map((data) => (data.strength ? { ...data, strength: data.strength + 1 } : data));
@@ -18,7 +18,7 @@ export const addStr = (user: Character[] | null, setUser: React.Dispatch<React.S
 
 }
 
-export const addInt = (user: Character[] | null, setUser: React.Dispatch<React.SetStateAction<Character[] | null>>) => {
+export const addInt = (user: Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => {
     
     if (!user) return;
     const updatedUser = user.map((data) => (data.intelligence ? { ...data, intelligence: data.intelligence + 1 } : data));
@@ -27,7 +27,7 @@ export const addInt = (user: Character[] | null, setUser: React.Dispatch<React.S
 
 }
 
-export const addDex = (user: Character[] | null, setUser: React.Dispatch<React.SetStateAction<Character[] | null>>) => {
+export const addDex = (user: Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => {
     
     if (!user) return;
     const updatedUser = user.map((data) => (data.dexterity ? { ...data, dexterity: data.dexterity + 1 } : data));
@@ -36,7 +36,7 @@ export const addDex = (user: Character[] | null, setUser: React.Dispatch<React.S
 
 }
 
-export const addLck = (user: Character[] | null, setUser: React.Dispatch<React.SetStateAction<Character[] | null>>) => {
+export const addLck = (user: Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => {
     
     if (!user) return;
     const updatedUser = user.map((data) => (data.luck ? { ...data, luck: data.luck + 1 } : data));

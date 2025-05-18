@@ -7,7 +7,7 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
     for (let i = 0; i < 3; i++) {
         const level = p_lvl + i;
         const vitality = 10 + level * 2;
-        
+
         // Helper to randomize a stat with scaling
         const randomize = (base: number, scale: number, variance: number = 0.15) => {
             const scaled = base + scale * level;
@@ -23,7 +23,20 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
             imgNum = Math.floor(Math.random() * (42 - 10 + 1)) + 10;
         } while (usedImages.includes(imgNum));
 
+        // Generate a random enemy name
+        const enemyNames = [
+            "Gorath", "Zyra", "Morgul", "Tharn", "Vexis", "Drak", "Lira", "Skar", "Vorin", "Zarn",
+            "Krag", "Mira", "Sable", "Riven", "Nyx", "Orin", "Vara", "Jax", "Kira", "Drax"
+        ];
+        // Ensure unique name per enemy in this batch
+        const usedNames: string[] = enemies.map(e => e.name);
+        let name: string;
+        do {
+            name = enemyNames[Math.floor(Math.random() * enemyNames.length)];
+        } while (usedNames.includes(name));
+
         const enemy = {
+            name,
             level,
             hp: randomize(10, vitality, 0.1) * 10,
             image: `/assets/enemies/con${imgNum}.png`, 
