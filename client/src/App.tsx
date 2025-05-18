@@ -8,25 +8,33 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import PickEnemy from './pages/PickEnemy';
 import Shop from './pages/Shop';
-
+import { useUser } from './context/UserContext';
 
 function App() {
+  const { user } = useUser();
   return (
     <div>
       <Header/>
-      <Sidebar/>
+      {user && <Sidebar/>}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/pickEnemy" element={
+        
+        <Route path="/pickEnemy" 
+        element={
           <ProtectedRoute>
             <PickEnemy/>
-          </ProtectedRoute>}/>
+          </ProtectedRoute>
+          }
+        />
 
-        <Route path='/shop' element={
+        <Route path='/shop' 
+        element={
           <ProtectedRoute>
             <Shop/>
-          </ProtectedRoute>}/>
+          </ProtectedRoute>
+          }
+        />
 
         <Route path="/characterOverview" 
         element={

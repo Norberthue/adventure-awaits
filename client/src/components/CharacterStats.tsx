@@ -12,10 +12,10 @@ const CharacterStats = () => {
             return (
                 <div key={player.userId} className='flex flex-col  border-4 border-[#2e2d2b] rounded-lg mb-4 max-w-[500px] w-full'>
                     <div className='flex items-center justify-between pl-6 pr-6 pt-3 pb-3  border-b-4 border-[#292827]'>
-                        <h1 className='text-4xl font-semibold text-[#daba80] '>{player.name}</h1>
+                        <h1 className='text-4xl font-semibold text-[#daba80]'>{player.name}</h1>
                         <p className='bg-[#211f25] text-[#dfdcd0] font-bold p-2 rounded-2xl text-xl'>Level {player.level}</p>
                     </div>
-                    <div className='flex gap-5  p-4'>
+                    <div className='flex gap-5 p-4'>
                         <div>
                             <img src={user[0].image} alt="Character" className='w-40 h-40  border-4 rounded-2xl border-[#292827]' />
                         </div>

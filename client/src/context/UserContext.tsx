@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 type UserContextType = {
-    user: Character[] | null;
-    setUser: React.Dispatch<React.SetStateAction<Character[] | null>>;
+    user: Character[] ;
+    setUser: React.Dispatch<React.SetStateAction<Character[]>>;
     logout: () => void;
     loading : boolean;
 };
@@ -14,7 +14,7 @@ type UserContextType = {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<Character[] | null>([]);
+    const [user, setUser] = useState<Character[]>([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate()
     //load user from local storage 
@@ -27,7 +27,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     },[])
 
     const logout = () => {
-        setUser(null);
+        setUser([]);
         localStorage.removeItem('user');
         navigate('/')
     };
