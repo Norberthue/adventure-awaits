@@ -6,11 +6,11 @@ import { getMaxEpxForLevel} from '../utils/ExpCalculation';
 const CharacterStats = () => {
     const { user, setUser } = useUser()
     
-    if (user) return (
-    <div className='flex flex-col items-center justify-center mt-10'>
+    return (
+    <div className='flex w-full flex-col items-center rounded-2xl justify-center border-4 border-border-yellow'>
         {user.map((player) => {
             return (
-                <div key={player.userId} className='flex flex-col  border-4 border-[#2e2d2b] rounded-lg mb-4 max-w-[500px] w-full'>
+                <div key={player.userId} className='flex flex-col  border-4 border-[#2e2d2b] rounded-lg mb-4  '>
                     <div className='flex items-center justify-between pl-6 pr-6 pt-3 pb-3  border-b-4 border-[#292827]'>
                         <h1 className='text-4xl font-semibold text-[#daba80]'>{player.name}</h1>
                         <p className='bg-[#211f25] text-[#dfdcd0] font-bold p-2 rounded-2xl text-xl'>Level {player.level}</p>

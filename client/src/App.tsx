@@ -5,17 +5,15 @@ import Login from './pages/Login';
 import CharacterOverview from './pages/CharacterOverview';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import PickEnemy from './pages/PickEnemy';
 import Shop from './pages/Shop';
-import { useUser } from './context/UserContext';
 
 function App() {
-  const { user } = useUser();
+  
   return (
     <div>
       <Header/>
-      {user && <Sidebar/>}
+      
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

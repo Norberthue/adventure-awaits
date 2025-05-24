@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Enemies } from '../types/enemies'
 
 interface EnemyBattleCardProps {
