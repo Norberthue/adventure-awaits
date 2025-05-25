@@ -11,7 +11,7 @@ import Shop from './pages/Shop';
 function App() {
   
   return (
-    <div>
+    <div className='max-w-[1440px] max-h-[1024px] w-full h-full mx-auto bg-dark flex flex-col'>
       <Header/>
       
       <Routes>

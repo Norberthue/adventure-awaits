@@ -8,7 +8,7 @@ const CharacterOverview = () => {
     if (loading) return <div className='text-white w-full h-full text-8xl flex items-center justify-center'>Loading...</div>
     if (!user) return <div className='text-white w-full h-full text-8xl flex items-center justify-center'>Please log in or register</div>;
     return (
-    <div className='flex gap-5 mt-5'>
+    <div className='grid grid-cols-12 gap-5 mt-5'>
       <Sidebar/>
       <CharacterStats />
     </div>

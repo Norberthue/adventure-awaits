@@ -6,7 +6,8 @@
     --color-border-gray: #4C4C4C;
     --color-text-y: #D4AF37;
     --color-dark-light: #232323;
-    --color-border-dark: #303030
+    --color-border-dark: #303030;
+    --color-slot: #252323;
 }
 
 body {
@@ -14,4 +15,5 @@ body {
     padding: 1.5rem 2rem;
     background-color: #232323;
     font-family: "MedievalSharp";
+    overflow: inherit;
 }
