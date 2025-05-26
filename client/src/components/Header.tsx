@@ -5,13 +5,14 @@ const Header = () => {
     console.log(user)
   return (
     <>
-        <div className="flex items-center  justify-between h-[155px] border-4 rounded-2xl pr-10 pl-10 border-border-yellow  bg-components text-white">
+        <div className="flex items-center justify-between h-[155px] border-4 rounded-2xl pr-10 pl-10 border-border-yellow  bg-components text-white">
         {user.length > 0 ? (
-            <div className='flex items-center justify-center gap-2'>
+            <div className='flex items-center justify-center   rounded-2xl  gap-2 w-[200px]'>
                 <div className=''>
                     <img className='rounded-full border-4 border-border-gray w-[100px] h-[90]' src={user[0].image}></img>
                 </div>
-                <div className='text-xl font-semibold '>
+                <div className='flex flex-col text-xl font-semibold'>
+                    <p className=''>{user[0].name}</p>
                     <p>Lvl.<span>{user[0].level}</span></p>
                     <p className='flex gap-1 items-center'>{user[0].gold}<img className='object-fit w-5' src='../assets/images/coin.png'/></p>
                 </div>
@@ -25,7 +26,7 @@ const Header = () => {
         {user.length > 0 ? (
             <div className="flex items-center ">
                 <button
-                    className="cursor-pointer text-text-y text-2xl font-semibold hover:text-text-y/90 duration-200 "
+                    className="cursor-pointer w-[200px] bg-dark-light hover:text-dark-light hover:bg-text-y text-text-y  pt-4 pb-4 rounded-2xl  text-3xl font-semibold duration-500 "
                     onClick={logout}
                 >
                     Logout

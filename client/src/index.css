@@ -12,8 +12,12 @@
 
 body {
     margin: 0 ;
-    padding: 1.5rem 2rem;
     background-color: #232323;
     font-family: "MedievalSharp";
-    overflow: inherit;
+    
+}
+
+
+.bg-slot-transparent {
+    background-color: #252323a9;
 }
