@@ -9,13 +9,13 @@ interface StatsProps {
   title2: string;
   data: string | number;
   func?: ( user:Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => void;
-  func2: (classtype: ClassType) => number | undefined
+  func2: (classtype: ClassType) => number | undefined;
 }
 
 const StatCard = ({title, title2, data, func, func2}: StatsProps) => {
   const { user, setUser } = useUser();
     return (
-    <div className='flex gap-2 justify-between items-center font-semibold text-xl pl-2 pr-2 pt-1 pb-1  border-2 border-[#2e2d2b] bg-dark-light rounded-lg'>
+    <div className='flex gap-4 justify-between items-center font-semibold text-xl pl-2 pr-2 pt-1 pb-1  border-2 border-[#2e2d2b] bg-dark-light rounded-lg'>
         <div className='flex flex-col  w-full'>
             <Stats title={title} data={data} />
             <SubStat title2={title2} data={data} func2={func2}/>

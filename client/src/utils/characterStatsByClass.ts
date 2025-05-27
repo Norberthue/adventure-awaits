@@ -8,7 +8,7 @@ export const getDmg= (classType: ClassType) => {
     }
     switch (classType) {
         case 'Warrior':
-            return user[0].strength * 3;
+            return user[0].strength * 5 
         case 'Mage':
             return user[0].intelligence * 2;
         case 'Hunter':
@@ -24,11 +24,11 @@ export const getHp = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Warrior':
-            return user[0].vitality * 5;
+            return user[0].vitality * 5 * (user[0].level + 1);
         case 'Mage':
-            return user[0].vitality * 2;
+            return user[0].vitality * 2 * (user[0].level + 1);
         case 'Hunter':
-            return user[0].vitality * 3;
+            return user[0].vitality * 4 * (user[0].level + 1);
         
     }
 }
@@ -41,9 +41,9 @@ export const getDefense = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Mage':
-            return user[0].strength / 2;
+            return Math.round(user[0].strength / 2);
         case 'Hunter':
-            return user[0].strength / 2;
+            return Math.round(user[0].strength / 2);
         
     }
 }
@@ -55,9 +55,9 @@ export const getEvasion = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Mage':
-            return user[0].dexterity / 2;
+            return Math.round(user[0].dexterity / 2);
         case 'Warrior':
-            return user[0].dexterity / 2;
+            return Math.round(user[0].dexterity / 2);
         
     }
 }
@@ -69,9 +69,9 @@ export const getResistence = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Hunter':
-            return user[0].intelligence / 2;
+            return Math.round(user[0].intelligence / 2);
         case 'Warrior':
-            return user[0].intelligence / 2;
+            return Math.round(user[0].intelligence / 2);
         
     }
 }
@@ -83,11 +83,11 @@ export const getCrit = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Warrior':
-            return user[0].luck * 5;
+            return Math.min((user[0].luck * 5) / (user[0].level * 2) / 100, 50);
         case 'Mage':
-            return user[0].luck * 5;
+            return  Math.min((user[0].luck * 5) / (user[0].level * 2) / 100, 50);
         case 'Hunter':
-            return user[0].luck * 5;
+            return  Math.min((user[0].luck * 5) / (user[0].level * 2) / 100, 50);
         
     }
 }
@@ -99,11 +99,11 @@ export const getDmgRed = (classType: ClassType) => {
     }
     switch (classType) {
         case 'Warrior':
-            return user[0].armor * 5;
+            return Math.min((user[0].armor * 5) / (user[0].armor * 5) / 100 ,50)
         case 'Mage':
-            return user[0].armor * 5;
+            return Math.min((user[0].armor * 5)  / (user[0].armor * 5)  / 100 ,10)
         case 'Hunter':
-            return user[0].armor * 5;
+            return Math.min((user[0].armor * 5)  / (user[0].armor * 5)  / 100 ,10)
         
     }
 }

@@ -47,7 +47,7 @@ const App: React.FC = () => {
         }}
       >
         <div className="w-[1540px] h-[1000px] p-4 mt-2 rounded-2xl mb-2 bg-dark-light flex flex-col">
-          <Header />
+          <Header/>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
