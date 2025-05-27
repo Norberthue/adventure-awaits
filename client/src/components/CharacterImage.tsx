@@ -13,7 +13,7 @@ const CharacterImage = ({player, getMaxEpxForLevel}: CharacterImageProps) => {
     
         <div className='relative'>
             <img src={user[0].image} alt="Character" className='object-cover w-full h-full border-4 border-border-gray rounded-t-2xl bg-border-dark' />
-            <div className='absolute bottom-[5%] w-50 left-1/2 flex items-center justify-center   -translate-x-1/2 pt-1 pb-1 pl-3 pr-3 bg-slot rounded-xl border-2 border-border-gray '>
+            <div className='absolute bottom-[5%] w-50 left-1/2 flex items-center justify-center -translate-x-1/2 pt-1 pb-1 pl-3 pr-3 bg-slot rounded-xl border-2 border-border-gray '>
                 <span className=' text-text-y text-2xl '>{player.name}</span>
             </div>
         </div>

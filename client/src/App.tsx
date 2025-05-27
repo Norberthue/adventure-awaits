@@ -21,7 +21,7 @@ const App: React.FC = () => {
       const scaleW = window.innerWidth / BASE_WIDTH;
       const scaleH = window.innerHeight / BASE_HEIGHT;
       const newScale = Math.min(scaleW, scaleH);
-
+  
       setScale(newScale);
 
       // Centering offsets
