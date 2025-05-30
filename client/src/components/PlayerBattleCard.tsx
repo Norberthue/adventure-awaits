@@ -4,7 +4,7 @@ import { getDmg, getHp } from '../utils/characterStatsByClass'
 const PlayerBattleCard = () => {
   const { user } = useUser()
     return (
-    <div className="flex flex-col items-center bg-[#222034] rounded-lg shadow-lg p-4 m-4 border-2 border-[#daba80]" key={user[0].level}>
+    <div className="flex flex-col items-center bg-border-dark rounded-lg shadow-lg p-4 m-4 border-2 border-[#daba80]" key={user[0].level}>
         <h1 className="text-3xl font-extrabold text-[#daba80] mb-2 drop-shadow">{user[0].name}</h1>
         <h1 className="text-3xl font-extrabold text-[#daba80] mb-2 drop-shadow">{user[0].class}</h1>
         <h1> Level: <span className="font-semibold">{user[0].level}</span></h1>

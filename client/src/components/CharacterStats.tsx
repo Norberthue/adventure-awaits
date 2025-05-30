@@ -21,9 +21,15 @@ const CharacterStats = () => {
                       
                         <div className='border-4 border-border-gray bg-border-dark rounded-b-2xl'>
                             <div className='flex p-3 flex-col gap-2'>
-                                <StatCard title={'Strength'} title2={player.class === "Warrior" ? "Damage" : "Defense"} data={player.strength} func={addStr} func2={player.class === 'Warrior' ? getDmg : getDefense}/>
-                                <StatCard title={'Dexterity'} title2={player.class === "Hunter" ? "Damage" : "Evasion"} data={player.dexterity} func={addDex} func2={player.class === 'Hunter'? getDmg : getEvasion}/>
-                                <StatCard title={'Intelligence'} title2={player.class === "Mage" ? "Damage" : "Resistance"} data={player.intelligence} func={addInt} func2={player.class === 'Mage' ? getDmg : getResistence}/>
+                                <StatCard title={'Strength'} title2={player.class === "Warrior" ? "Damage" : "Defense"}
+                                data={player.strength} func={addStr} func2={player.class === 'Warrior' ? getDmg : getDefense}/>
+
+                                <StatCard title={'Dexterity'} title2={player.class === "Hunter" ? "Damage" : "Evasion"} 
+                                data={player.dexterity} func={addDex} func2={player.class === 'Hunter'? getDmg : getEvasion}/>
+
+                                <StatCard title={'Intelligence'} title2={player.class === "Mage" ? "Damage" : "Resistance"} 
+                                data={player.intelligence} func={addInt} func2={player.class === 'Mage' ? getDmg : getResistence}/>
+                                
                                 <StatCard title={'Vitality'} title2={'Hit Points'} data={player.vitality} func={addVit} func2={getHp}/>
                                 <StatCard title={'Luck'} title2={"Crit Hit"} data={player.luck} func={addLck} func2={getCrit}/>
                                 <StatCard title={'Armor'} title2={"Damage Red"} data={player.armor} func2={getDmgRed}/>

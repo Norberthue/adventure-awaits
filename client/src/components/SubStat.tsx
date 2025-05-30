@@ -1,18 +1,13 @@
-import React from 'react'
-import Stats from './Stats'
-import type { Character } from '../types/characters';
 import { useUser } from '../context/UserContext';
 import type { ClassType } from '../types/characters';
 
 interface StatsProps {
   title2: string;
-  data: string | number;
   func2: (classtype: ClassType) => number | undefined;
 }
 
-const SubStat = ({title2, data, func2}: StatsProps) => {
-   const { user, setUser } = useUser();
- 
+const SubStat = ({title2,  func2}: StatsProps) => {
+   const { user } = useUser();
 
   return (
 

@@ -8,7 +8,7 @@ interface BattleSceneProps {
 
 const BattleScene = ({enemy}: BattleSceneProps) => {
   return (
-    <div className='flex  items-center justify-center h-screen bg-[#181820]'>
+    <div className='flex justify-between gap-10'>
         <PlayerBattleCard/>
         <EnemyBattleCard enemy={enemy} />
     </div>
