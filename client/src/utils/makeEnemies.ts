@@ -7,7 +7,6 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
     for (let i = 0; i < 3; i++) {
         const level = p_lvl + i;
         const vitality = 10 + level * 2;
-
         // Helper to randomize a stat with scaling
         const randomize = (base: number, scale: number, variance: number = 0.15) => {
             const scaled = base + scale * level;
@@ -15,6 +14,7 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
             const max = Math.ceil(scaled * (1 + variance));
             return Math.floor(Math.random() * (max - min + 1)) + min;
         };
+        const hp = randomize(10, vitality, 0.1) * 10
 
         // Generate unique random numbers between 10 and 42 for enemy images
         const usedImages: number[] = enemies.map(e => e.image.match(/con(\d+)\.png/)?.[1]).filter(Boolean).map(Number);
@@ -38,7 +38,8 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
         const enemy = {
             name,
             level,
-            hp: randomize(10, vitality, 0.1) * 10,
+            hp,
+            maxHp: hp,
             image: `/assets/enemies/con${imgNum}.png`, 
             class: (['Warrior', 'Hunter', 'Mage'][i % 3] as ClassType),
             intelligence: randomize(5, 1),

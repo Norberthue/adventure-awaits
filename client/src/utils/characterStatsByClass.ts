@@ -1,8 +1,6 @@
-import { useUser} from '../context/UserContext';
-import type { ClassType } from "../types/characters"
+import type { Character, ClassType } from "../types/characters"
 
-export const getDmg= (classType: ClassType) => {
-    const { user } = useUser();
+export const getDmg= (classType: ClassType , user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -17,8 +15,7 @@ export const getDmg= (classType: ClassType) => {
     }
 }
 
-export const getHp = (classType: ClassType) => {
-    const { user } = useUser();
+export const getHp = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -34,8 +31,7 @@ export const getHp = (classType: ClassType) => {
 }
 
 
-export const getDefense = (classType: ClassType) => {
-    const { user } = useUser();
+export const getDefense = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -48,8 +44,7 @@ export const getDefense = (classType: ClassType) => {
     }
 }
 
-export const getEvasion = (classType: ClassType) => {
-    const { user } = useUser();
+export const getEvasion = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -62,8 +57,7 @@ export const getEvasion = (classType: ClassType) => {
     }
 }
 
-export const getResistence = (classType: ClassType) => {
-    const { user } = useUser();
+export const getResistence = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -76,8 +70,7 @@ export const getResistence = (classType: ClassType) => {
     }
 }
 
-export const getCrit = (classType: ClassType) => {
-    const { user } = useUser();
+export const getCrit = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }
@@ -92,8 +85,7 @@ export const getCrit = (classType: ClassType) => {
     }
 }
 
-export const getDmgRed = (classType: ClassType) => {
-    const { user } = useUser();
+export const getDmgRed = (classType: ClassType, user: Character[]) => {
     if (!user || !user[0]) {
         return 0;
     }

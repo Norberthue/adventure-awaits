@@ -1,9 +1,9 @@
 import { useUser } from '../../context/UserContext';
-import type { ClassType } from '../../types/characters';
+import type { Character, ClassType } from '../../types/characters';
 
 interface StatsProps {
   title2: string;
-  func2: (classtype: ClassType) => number | undefined;
+  func2: (classtype: ClassType, user:Character[]) => number | undefined;
 }
 
 const SubStat = ({title2,  func2}: StatsProps) => {
@@ -13,7 +13,7 @@ const SubStat = ({title2,  func2}: StatsProps) => {
 
     <div className='flex justify-between items-center'>
         <p className='text-text-y text-sm '>{title2}</p>
-        <p className='text-text-y text-sm'>{func2(user[0].class)}</p>
+        <p className='text-text-y text-sm'>{func2(user[0].class, user)}</p>
     </div>
   )
 }

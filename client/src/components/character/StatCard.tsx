@@ -9,7 +9,7 @@ interface StatsProps {
   title2: string;
   data: string | number;
   func?: (user:Character[], setUser: React.Dispatch<React.SetStateAction<Character[]>>) => void;
-  func2: (classtype: ClassType) => number | undefined;
+  func2: (classtype: ClassType,  user:Character[]) => number | undefined;
 }
 
 const StatCard = ({title, title2, data, func, func2}: StatsProps) => {

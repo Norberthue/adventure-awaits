@@ -16,7 +16,6 @@ const PickEnemy = () => {
     setEnemies(makeEnemies(user[0].level) as Enemies[]) 
   },[])
   
-
   const chosenEnemy = (index: number) => {
     setEnemy(enemies[index]) 
     
@@ -43,13 +42,12 @@ const PickEnemy = () => {
                     Battle
                   </button>
                 </div>
-                
               </div>
             )
           })}
         </div>
         ) : (
-          <BattleScene enemy={enemy}/>
+          <BattleScene enemy={enemy} setEnemy={setEnemy}/>
         )}
         
       </div>

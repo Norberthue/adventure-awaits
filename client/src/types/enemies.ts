@@ -6,6 +6,7 @@ export interface Enemies {
   image: string;
   level: number;
   hp: number;
+  maxHp: number;
   vitality: number;
   strength: number;
   dexterity: number;
