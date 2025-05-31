@@ -1,5 +1,5 @@
-import { useUser } from '../context/UserContext';
-import type { ClassType } from '../types/characters';
+import { useUser } from '../../context/UserContext';
+import type { ClassType } from '../../types/characters';
 
 interface StatsProps {
   title2: string;

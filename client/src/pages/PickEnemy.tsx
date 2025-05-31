@@ -4,6 +4,8 @@ import type { Enemies } from "../types/enemies"
 import { useEffect, useState } from "react"
 import BattleScene from "./BattleScene"
 import Sidebar from "../components/Sidebar"
+import BattleStats from "../components/battle/BattleStats"
+import BattleImage from "../components/battle/BattleImage"
 
 
 const PickEnemy = () => {
@@ -29,31 +31,15 @@ const PickEnemy = () => {
             return (
               <div className="flex flex-col items-center w-[300px]  rounded-lg shadow-lg m-4 " key={e.level}>
             
-                <div className='relative w-full'>
-                    <img src={e.image} alt="Character" className='object-cover w-full h-full border-b-4 border-t-4 border-l-4 border-r-4 border-border-gray rounded-t-2xl bg-border-dark' />
-                    <div className='absolute gap-2 bottom-[5%] w-50 left-1/2 flex items-center justify-center -translate-x-1/2 pt-1 pb-1 pl-3 pr-3 bg-slot rounded-xl border-2 border-border-gray '>
-                        <span className=' text-text-y text-2xl '>{e.name}</span>
-                        <h1 className="text-text-y text-2xl flex gap-2"> Level: <span className="text-text-y text-2xl">{e.level}</span></h1>
-                    </div>
-                </div>
+                <BattleImage image={e.image} name={e.name} level={e.level}/>
                 
-                <div className="flex w-full text-xl  border-b-4 border-l-4 border-r-4 p-2 text-white flex-col gap-5 border-border-gray bg-border-dark rounded-b-2xl">
-                  <div className="border-2  border-border-gray rounded-md p-2 bg-dark-light">
-                    <p className="flex justify-between items-center">Strength: <span className="font-semibold">{e.strength}</span></p>
-                  </div>
-                  <div className="border-2  border-border-gray rounded-md p-2 bg-dark-light">
-                    <p className="flex justify-between items-center">Dexterity: <span className="font-semibold">{e.dexterity}</span></p>
-                  </div>
-                  <div className="border-2  border-border-gray rounded-md p-2 bg-dark-light">
-                    <p className="flex justify-between items-center">Intelligence: <span className="font-semibold">{e.intelligence}</span></p>
-                  </div>
-                  <div className="border-2  border-border-gray rounded-md p-2 bg-dark-light">
-                    <p className="flex justify-between items-center">Vitality: <span className="font-semibold">{e.vitality}</span></p>
-                  </div>
-                  <div className="border-2  border-border-gray rounded-md p-2 bg-dark-light">
-                    <p className="flex justify-between items-center">Luck: <span className="font-semibold">{e.luck}</span></p>
-                  </div>
-                  <button onClick={() => chosenEnemy(index)} className=" text-2xl cursor-pointer p-2 mt-2 w-full text-[#222034] font-bold bg-gradient-to-r from-[#daba80] to-[#b89a5f] rounded-md hover:from-[#b89a5f] hover:to-[#daba80] duration-200 transition-colors">
+                <div className="flex w-full text-xl font-semibold  border-b-4 border-l-4 border-r-4 p-3 pt-4 pb-4 text-white flex-col gap-5 border-border-gray bg-border-dark rounded-b-2xl">
+                  <BattleStats title={'Strength'} data={e.strength}/>
+                  <BattleStats title={'Dexterity'} data={e.dexterity}/>
+                  <BattleStats title={'Intelligence'} data={e.intelligence}/>
+                  <BattleStats title={'Vitality'} data={e.vitality}/>
+                  <BattleStats title={'Luck'} data={e.luck}/>
+                  <button onClick={() => chosenEnemy(index)} className=" text-2xl cursor-pointer p-2 mt-2 w-full text-text-y font-bold bg-dark-light hover:text-dark-light hover:bg-text-y  rounded-md  duration-200 transition-colors">
                     Battle
                   </button>
                 </div>

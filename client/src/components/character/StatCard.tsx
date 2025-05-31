@@ -1,9 +1,9 @@
 import React from 'react'
 import Stats from './Stats'
-import type { Character } from '../types/characters';
-import { useUser } from '../context/UserContext';
+import type { Character } from '../../types/characters';
+import { useUser } from '../../context/UserContext';
 import SubStat from './SubStat';
-import type { ClassType } from '../types/characters';
+import type { ClassType } from '../../types/characters';
 interface StatsProps {
   title: string;
   title2: string;

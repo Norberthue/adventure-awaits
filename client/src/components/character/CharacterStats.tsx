@@ -1,12 +1,12 @@
-import { useUser } from '../context/UserContext';
-import { addVit, addStr, addDex, addInt, addLck } from '../utils/addingStats';
-import { getMaxEpxForLevel} from '../utils/ExpCalculation';
+import { useUser } from '../../context/UserContext';
+import { addVit, addStr, addDex, addInt, addLck } from '../../utils/addingStats';
+import { getMaxEpxForLevel} from '../../utils/ExpCalculation';
 import Equipment from './Equipment';
 import Augments from './Augments';
 import Inventory from './Inventory';
 import CharacterImage from './CharacterImage';
 import StatCard from './StatCard';
-import { getDmg, getHp, getCrit, getDefense, getDmgRed, getEvasion, getResistence } from '../utils/characterStatsByClass';
+import { getDmg, getHp, getCrit, getDefense, getDmgRed, getEvasion, getResistence } from '../../utils/characterStatsByClass';
 const CharacterStats = () => {
     const { user } = useUser()
     

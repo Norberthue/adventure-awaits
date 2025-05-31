@@ -1,6 +1,6 @@
 
 import { useUser} from '../context/UserContext';
-import CharacterStats from '../components/CharacterStats';
+import CharacterStats from '../components/character/CharacterStats';
 import Sidebar from '../components/Sidebar';
 const CharacterOverview = () => {
     const { loading, user  } = useUser();

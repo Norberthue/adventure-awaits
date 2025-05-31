@@ -1,6 +1,5 @@
-import React from 'react'
-import type { Character } from '../types/characters'
-import { useUser } from '../context/UserContext'
+import type { Character } from '../../types/characters'
+import { useUser } from '../../context/UserContext'
 interface CharacterImageProps {
   player: Character
   getMaxEpxForLevel: (level: number) => number
