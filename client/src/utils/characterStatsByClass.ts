@@ -91,11 +91,11 @@ export const getDmgRed = (classType: ClassType, user: Character[]) => {
     }
     switch (classType) {
         case 'Warrior':
-            return Math.min((user[0].armor * 5) / (user[0].armor * 5) / 100 ,50)
+            return Math.min((user[0].armor * 5) / (user[0].level * 2) / 100 ,50)
         case 'Mage':
-            return Math.min((user[0].armor * 5)  / (user[0].armor * 5)  / 100 ,10)
+            return Math.min((user[0].armor * 5)  / (user[0].level * 2)  / 100 ,10)
         case 'Hunter':
-            return Math.min((user[0].armor * 5)  / (user[0].armor * 5)  / 100 ,10)
+            return Math.min((user[0].armor * 5)  / (user[0].level * 2)  / 100 ,25)
         
     }
 }

@@ -2,7 +2,7 @@ import type { ClassType } from "./characters";
 
 export interface Enemies {
   name: string;
-  class: ClassType;
+  classType: ClassType;
   image: string;
   level: number;
   hp: number;
@@ -12,6 +12,6 @@ export interface Enemies {
   dexterity: number;
   intelligence: number;
   luck: number;
-  attack: number;
+  damage: number;
   armor: number;
 }

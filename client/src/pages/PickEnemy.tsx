@@ -15,7 +15,7 @@ const PickEnemy = () => {
   useEffect(() => {
     setEnemies(makeEnemies(user[0].level) as Enemies[]) 
   },[])
-  
+
   const chosenEnemy = (index: number) => {
     setEnemy(enemies[index]) 
     
@@ -30,7 +30,7 @@ const PickEnemy = () => {
             return (
               <div className="flex flex-col items-center w-[300px]  rounded-lg shadow-lg m-4 " key={e.level}>
             
-                <BattleImage image={e.image} name={e.name} level={e.level}/>
+                <BattleImage image={e.image} name={e.name} level={e.level} classType={e.classType}/>
                 
                 <div className="flex w-full text-xl font-semibold  border-b-4 border-l-4 border-r-4 p-3 pt-4 pb-4 text-white flex-col gap-5 border-border-gray bg-border-dark rounded-b-2xl">
                   <BattleStats title={'Strength'} data={e.strength}/>

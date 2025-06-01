@@ -12,7 +12,7 @@ const PlayerBattleCard = ({ player }:PlayerBattleCardProps) => {
   const { user } = useUser()
   return (
     <div className="flex flex-col items-center w-[300px] gap-5" key={player.level}>
-        <BattleImage image={player.image} name={player.name} level={player.level}/>
+        <BattleImage image={player.image} name={player.name} level={player.level} classType={player.class}/>
 
         <div className='relative w-full border-2 text-2xl text-white border-border-gray'>
             <div className='bg-[#4D8219] w-full h-10' style={{ width: `${Math.min(100, (player.hp / getHp(player.class, user)) * 100 )}%`}}></div>

@@ -18,23 +18,34 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
   playerCopy.hp = getHp(playerCopy.class, user)
   const [attackAnimation, setAttackAnimation] = useState<any>(null);
   const [round, setRound] = useState(0);
+  const [whoAttacks, setWhoAttacks] = useState(true)
+  useEffect(() => {
+      if (round === 0) return;
+      if (playerCopy.hp <= 0 || enemy.hp <= 0) return;
+      
 
- useEffect(() => {
-    if (round === 0) return;
-    if (playerCopy.hp <= 0 || enemy.hp <= 0) return;
 
-    performAttackPlayer(user,playerCopy, enemy, setAttackAnimation, () => {
-      setEnemy((prev: Enemies) => ({ ...prev, hp: Math.max(0, prev.hp - (attackAnimation?.damage ?? 0)) }));
-      if (enemy.hp <= 0) return;
       setTimeout(() => {
-        performAttackEnemy(user, enemy, playerCopy, setAttackAnimation, () => {
-          setPlayerCopy((prev: Character) => ({ ...prev, hp: Math.max(0, prev.hp - (attackAnimation?.damage ?? 0)) }));
-          if (playerCopy.hp <= 0) return;
-          setTimeout(() => setRound(prev => prev + 1), 500);
-        });
-      }, 1000);
-    });
+          if (whoAttacks) {
+            setPlayerCopy((prev: Character) => {
+              const damage = performAttackEnemy(user, enemy, prev);
+              const newHp = prev.hp - damage;
+              // Optionally, clamp HP to minimum 0
+              return { ...prev, hp: newHp > 0 ? newHp : 0 };
+            });
+          }
+          // } else {
+          //   setEnemy((prev: Enemies) => ({ ...prev, hp: prev.hp - (performAttackPlayer(user,playerCopy, enemy))}));
+          // }
+          // Use latest state in effect dependencies to check for end of battle
+          setWhoAttacks(prev => !prev)
+          setRound(prev => prev + 1)
+      }, 1000)
+
+      
+
   }, [round]);
+
 
   useEffect(() => {
     setTimeout(() => setRound(1), 1000);
