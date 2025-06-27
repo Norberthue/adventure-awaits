@@ -13,8 +13,8 @@ const EnemyBattleCard = ({enemy}: EnemyBattleCardProps) => {
         <BattleImage image={enemy.image} name={enemy.name} level={enemy.level} classType={enemy.classType}/>
         
         <div className='relative w-full border-2 text-2xl text-white border-border-gray'>
-            <div className='bg-[#4D8219] w-full h-10' style={{ width: `${Math.min(100, (enemy.hp / enemy.maxHp) * 100 )}%`}}></div>
-            <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>{enemy.hp} / {enemy.hp} </p>
+            <div className='bg-[#4D8219] w-full h-10' style={{ width: `${enemy.hp > 0 ? Math.min(100, (enemy.hp / enemy.maxHp) * 100 ) : 0}%`}}></div>
+            <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>{enemy.hp} / {enemy.maxHp} </p>
         </div>
 
         <div className="flex text-white w-full flex-col gap-2 bg-border-dark rounded-b-xl p-2 border-4 border-border-gray">

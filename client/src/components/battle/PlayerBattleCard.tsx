@@ -15,7 +15,7 @@ const PlayerBattleCard = ({ player }:PlayerBattleCardProps) => {
         <BattleImage image={player.image} name={player.name} level={player.level} classType={player.class}/>
 
         <div className='relative w-full border-2 text-2xl text-white border-border-gray'>
-            <div className='bg-[#4D8219] w-full h-10' style={{ width: `${Math.min(100, (player.hp / getHp(player.class, user)) * 100 )}%`}}></div>
+            <div className='bg-[#4D8219] w-full h-10' style={{ width: `${player.hp > 0 ? Math.min(100, (player.hp / getHp(player.class, user)) * 100 ) : 0}%`}}></div>
             <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' >{player.hp} / {getHp(player.class, user)} </p>
         </div>
        

@@ -3,7 +3,6 @@ import EnemyBattleCard from '../components/battle/EnemyBattleCard'
 import PlayerBattleCard from '../components/battle/PlayerBattleCard'
 import { useUser } from '../context/UserContext'
 import { useEffect, useState } from 'react'
-import { getHp } from '../utils/characterStatsByClass'
 import { performAttackEnemy , performAttackPlayer } from '../utils/battle'
 import type { Character } from '../types/characters'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -15,36 +14,46 @@ interface BattleSceneProps {
 const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
   const { user } = useUser()
   const [playerCopy, setPlayerCopy] = useState(JSON.parse(JSON.stringify(user[0])))
-  playerCopy.hp = getHp(playerCopy.class, user)
   const [attackAnimation, setAttackAnimation] = useState<any>(null);
   const [round, setRound] = useState(0);
   const [whoAttacks, setWhoAttacks] = useState(true)
+  const [isAnimating, setIsAnimating] = useState(false);
+  // console.log(user[0])
+  // console.log(playerCopy, 'player copy')
+  // console.log(playerCopy.hp, 'player hp')
+  // console.log(enemy.hp, 'enemy hp')
+  // console.log(whoAttacks, 'who attacks')
   useEffect(() => {
-      if (round === 0) return;
-      if (playerCopy.hp <= 0 || enemy.hp <= 0) return;
+  if (round === 0) return;
+  if (playerCopy.hp <= 0 || enemy.hp <= 0 || isAnimating) return;
+
+  if (whoAttacks) {
+    // Enemy attacks
+    performAttackEnemy(user, enemy, playerCopy, setAttackAnimation, (damage) => {
+      setPlayerCopy((prev: Character) => ({
+        ...prev,
+        hp: Math.max(0, prev.hp - damage)
+      }));
+      setWhoAttacks(false);
+      setRound(prev => prev + 1);
+
+     
+    }, setIsAnimating);
+  } else {
+    // Player attacks
+    performAttackPlayer(user, playerCopy, enemy, setAttackAnimation, (damage) => {
+      setEnemy((prev: Enemies) => ({
+        ...prev,
+        hp: Math.max(0, prev.hp - damage)
+      }));
+      setWhoAttacks(true);
+      setRound(prev => prev + 1);
       
-
-
-      setTimeout(() => {
-          if (whoAttacks) {
-            setPlayerCopy((prev: Character) => {
-              const damage = performAttackEnemy(user, enemy, prev);
-              const newHp = prev.hp - damage;
-              // Optionally, clamp HP to minimum 0
-              return { ...prev, hp: newHp > 0 ? newHp : 0 };
-            });
-          }
-          // } else {
-          //   setEnemy((prev: Enemies) => ({ ...prev, hp: prev.hp - (performAttackPlayer(user,playerCopy, enemy))}));
-          // }
-          // Use latest state in effect dependencies to check for end of battle
-          setWhoAttacks(prev => !prev)
-          setRound(prev => prev + 1)
-      }, 1000)
-
       
+    }, setIsAnimating)
+  }
 
-  }, [round]);
+}, [round]);
 
 
   useEffect(() => {
@@ -62,21 +71,21 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
         </div>
         <EnemyBattleCard enemy={enemy}/>
         
-        <AnimatePresence>
-        {attackAnimation && (
-          <motion.div
-            key={Math.random()}
-            initial={{ x: attackAnimation.from === user[0].name ? -150 : 150, y: 0, opacity: 1 }}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute top-1/2 left-1/2 text-5xl text-red-600 z-50"
-            onAnimationComplete={attackAnimation.onHit}
-          >
-            {attackAnimation.type === 'slash' ? '🗡️' : '🔥'}
-          </motion.div>
-        )}
-      </AnimatePresence>
+       <AnimatePresence>
+  {attackAnimation && (
+    <motion.div
+      key={Math.random()}
+      initial={{ x: attackAnimation.from === user[0].name ? -150 : 350, y: 0, opacity: 1 }}
+      animate={{ x: 0, y: 0, opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="absolute top-1/2 left-1/2 text-5xl text-red-600 z-50"
+     
+    >
+      {attackAnimation.type === 'slash' ? '🗡️' : '🔥'}
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   )
 }

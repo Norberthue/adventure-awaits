@@ -6,7 +6,7 @@ export interface Character {
   class: ClassType;
   image: string;
   level: number;
-  hp:number;
+  hp:number
   vitality: number;
   strength: number;
   dexterity: number;
