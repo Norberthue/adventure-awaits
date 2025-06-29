@@ -18,7 +18,7 @@ export function performAttackPlayer (user: Character[] ,attacker: Character, def
     const reducedDamage = Math.max(1, Math.floor(damage * (1 - damageReduction)));
     
     
-    setIsAnimating(true);
+    
     setAttackAnimation({
         from: attacker.name,
         type: 'slash',
@@ -26,12 +26,11 @@ export function performAttackPlayer (user: Character[] ,attacker: Character, def
         
   });
 
-  setIsAnimating(true);
+  
   setTimeout(() => {
-    defender.hp = Math.max(0, defender.hp - reducedDamage);
     onDamageDone(reducedDamage);
-    setIsAnimating(false);
-  }, 500); // ⏳ delay for animation
+    
+  }, 1000); // ⏳ delay for animation
 }
 
 
@@ -48,7 +47,7 @@ export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defen
   const reducedDamage = Math.max(1, Math.floor(damage * (1 - damageReduction)));
   
   
-  setIsAnimating(true);
+  
   setAttackAnimation({
     from: attacker.name,
     type: 'fireball',
@@ -56,10 +55,8 @@ export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defen
    
   });
 
-  setIsAnimating(true);
+ 
   setTimeout(() => {
-    defender.hp = Math.max(0, defender.hp - reducedDamage);
     onDamageDone(reducedDamage);
-    setIsAnimating(false);
-  }, 500); // ⏳ delay for animation
+  }, 1000); // ⏳ delay for animation
 }
