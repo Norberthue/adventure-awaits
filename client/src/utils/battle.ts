@@ -3,7 +3,9 @@ import type { Enemies } from "../types/enemies";
 import { getDmg, getDmgRed } from "./characterStatsByClass";
 
 
-export function performAttackPlayer (user: Character[] ,attacker: Character, defender: Enemies, setAttackAnimation: any, onDamageDone: (damage: number) => void, setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>) {
+export function performAttackPlayer (user: Character[] ,attacker: Character, defender: Enemies, setAttackAnimation: any, onDamageDone: (damage: number) => void) {
+    
+  if (attacker.hp <= 0 || defender.hp <= 0) return; 
     
     let damage = getDmg(attacker.class, user);
 
@@ -19,22 +21,29 @@ export function performAttackPlayer (user: Character[] ,attacker: Character, def
     
     
     
-    setAttackAnimation({
+
+      setAttackAnimation({
         from: attacker.name,
         type: 'slash',
         damage: reducedDamage,
-        
-  });
+        onHit: () => {
+          if (defender.hp <= 0) return; // ⛔ In case HP changed mid-delay
+          
+          onDamageDone(reducedDamage);
+        }
+    });
+   
+
+    
 
   
-  setTimeout(() => {
-    onDamageDone(reducedDamage);
-    
-  }, 1000); // ⏳ delay for animation
+  
 }
 
 
-export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defender: Character, setAttackAnimation: any, onDamageDone: (damage: number) => void, setIsAnimating: React.Dispatch<React.SetStateAction<boolean>> ) {
+export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defender: Character, setAttackAnimation: any, onDamageDone: (damage: number) => void) {
+  if (attacker.hp <= 0 || defender.hp <= 0) return; 
+  
   let damage = attacker.damage;
   const isCrit = Math.random() < attacker.luck;
   
@@ -46,17 +55,19 @@ export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defen
   const damageReduction = getDmgRed(defender.class, user)
   const reducedDamage = Math.max(1, Math.floor(damage * (1 - damageReduction)));
   
-  
+  console.log('Enemy dmg :', reducedDamage)
   
   setAttackAnimation({
-    from: attacker.name,
-    type: 'fireball',
-    damage: reducedDamage,
-   
+      from: attacker.name,
+      type: 'fireball',
+      damage: reducedDamage,
+      onHit: () => {
+        if (defender.hp <= 0) return; // ⛔ In case HP changed mid-delay
+        
+        onDamageDone(reducedDamage);
+      }
   });
 
  
-  setTimeout(() => {
-    onDamageDone(reducedDamage);
-  }, 1000); // ⏳ delay for animation
+  
 }
