@@ -5,6 +5,7 @@ const router = express.Router();
 
 // In-memory user store (for now)
 const users = [];
+console.log(users, '===users in auth.js')
 
 router.post('/register', async (req, res) => {
   const { email, name, password , classType, image} = req.body;
@@ -40,7 +41,12 @@ router.post('/register', async (req, res) => {
         armor: 5,
         gold: 70,
         experience:0,
-        inventory: [], 
+        inventory: {
+          weapon: {
+            name: 'Wooden Sword',
+            img: './public/assets/weapons/Icon28_16.png',
+          }
+      }, 
     }
   };
 

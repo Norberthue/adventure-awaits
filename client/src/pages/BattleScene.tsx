@@ -18,9 +18,6 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
   const [round, setRound] = useState(1);
   const [whoAttacks, setWhoAttacks] = useState(true)
  
-  
-  
-  
   useEffect(() => {
     if (round === 0) return;
     if (playerCopy.hp <= 0 || enemy.hp <= 0) {
@@ -46,7 +43,7 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
         
       
       });
-    } else {
+    } else {        
       // console.log('Player attacks');
       // Player attacks
       performAttackPlayer(user, playerCopy, enemy, setAttackAnimation, (damage) => {
@@ -56,8 +53,6 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
         }));
         setRound(prev => prev + 1);
         setWhoAttacks(true);
-        
-        
       })
     }
 
@@ -122,7 +117,7 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
             onAnimationComplete={attackAnimation.onHit}
             >
             
-            { '🗡️'}
+            <img className='w-15'  src={user[0].inventory.weapon.img}></img>
         </motion.div>
         )}
       </AnimatePresence>

@@ -50,7 +50,7 @@ const Register = () => {
         image
       });
       setUser([res.data.newUser.character])
-      localStorage.setItem('user', JSON.stringify(res.data.newUser.character))
+      localStorage.setItem('user', JSON.stringify([res.data.newUser.character]))
       navigate('/characterOverview');
     } catch (err: any) {
       setError(err.response?.data?.message || 'Registration failed');

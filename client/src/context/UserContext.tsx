@@ -20,6 +20,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     //load user from local storage 
     useEffect(() => {
         const stored = localStorage.getItem('user')
+        // console.log(stored, '===context')
         if (stored) {
             setUser(JSON.parse(stored))
         }

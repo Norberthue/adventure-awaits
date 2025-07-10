@@ -15,5 +15,5 @@ export interface Character {
   armor: number;
   gold: number;
   experience: number;
-  inventory: string[];
+  inventory: any;
 }

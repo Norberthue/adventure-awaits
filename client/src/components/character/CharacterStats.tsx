@@ -10,6 +10,7 @@ import { getDmg, getHp, getCrit, getDefense, getDmgRed, getEvasion, getResistenc
 const CharacterStats = () => {
     const { user } = useUser()
     user[0].hp = getHp(user[0].class, user)
+    console.log(user[0].inventory.weapon.img, '===user in CharacterStats')
     return (
     <div className='col-span-10 pt-4 pb-4 pr-10 pl-10  h-[800px] rounded-2xl bg-components justify-center border-4 border-border-yellow'>
         {user.map((player) => {
