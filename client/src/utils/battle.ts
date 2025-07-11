@@ -55,7 +55,7 @@ export function performAttackEnemy (user: Character[] ,attacker:  Enemies, defen
   const damageReduction = getDmgRed(defender.class, user)
   const reducedDamage = Math.max(1, Math.floor(damage * (1 - damageReduction)));
   
-  console.log('Enemy dmg :', reducedDamage)
+  
   
   setAttackAnimation({
       from: attacker.name,

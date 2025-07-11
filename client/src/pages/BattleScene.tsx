@@ -28,34 +28,36 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
       return;
     }
     
-    
-
     if (whoAttacks) {
       // Enemy attacks
-      // console.log('Enemy attacks');
-      performAttackEnemy(user, enemy, playerCopy, setAttackAnimation, (damage) => {
-        setPlayerCopy((prev: Character) => ({
-          ...prev,
-          hp: Math.max(0, prev.hp - damage)
-        }));
-        setRound(prev => prev + 1);
-        setWhoAttacks(false);
-        
-      
-      });
-    } else {        
-      // console.log('Player attacks');
-      // Player attacks
-      performAttackPlayer(user, playerCopy, enemy, setAttackAnimation, (damage) => {
-        setEnemy((prev: Enemies) => ({
-          ...prev,
-          hp: Math.max(0, prev.hp - damage)
-        }));
-        setRound(prev => prev + 1);
-        setWhoAttacks(true);
-      })
-    }
+        performAttackEnemy(user, enemy, playerCopy, setAttackAnimation, (damage) => {
+          console.log('Damage done by enemy:', damage);
+          setPlayerCopy((prev: Character) => ({
+            ...prev,
+            hp: Math.max(0, prev.hp - damage)
+          }));
+          setRound(prev => prev + 1);
+          setWhoAttacks(false);
+          if (playerCopy.hp <= 0 || enemy.hp <= 0) return
+        });
 
+     
+    } else {        
+      
+        // Player attacks
+         performAttackPlayer(user, playerCopy, enemy, setAttackAnimation, (damage) => {
+          console.log('Damage done by player:', damage);
+          setEnemy((prev: Enemies) => ({
+            ...prev,
+            hp: Math.max(0, prev.hp - damage)
+          }));
+          setRound(prev => prev + 1);
+          setWhoAttacks(true);
+          if (playerCopy.hp <= 0 || enemy.hp <= 0) return
+        })
+     
+      
+    }
 }, [round]);
 
   return (
@@ -69,7 +71,7 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
         </div>
         <EnemyBattleCard enemy={enemy}/>
         
-      <AnimatePresence>
+      
         {attackAnimation && whoAttacks &&  (
           <motion.div
             key={Math.random()}
@@ -80,13 +82,13 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
             }}
             animate={{
             x: -150,
-            y: [ -100, -110, -120, -130, -120, -110 -100 ], // up, then down to baseline
+            y: [ -100, -200, -100], // up, then down to baseline
             opacity: 1
             }}
             
             transition={{
             duration: 1,
-            y: { times: [0.1, 0.2, 0.3, 0.4, 0.5 ,0.6, 0.7] } // control timing of y keyframes
+            ease: "easeOut",
             }}
             className="absolute top-1/2 left-1/2 text-5xl text-red-600 z-50"
             onAnimationComplete={attackAnimation.onHit}
@@ -98,20 +100,22 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
         {attackAnimation && !whoAttacks &&  (
           <motion.div
             key={Math.random()}
+            
             initial={{
             x: -150 ,
             y: -100,
             opacity: 1
             }}
+
             animate={{
             x: 350,
-            y: [ -100, -110, -120, -130, -120, -110 -100 ], // up, then down to baseline
+            y: [ -100, -200, -100 ], // up, then down to baseline
             opacity: 1
             }}
             
             transition={{
             duration: 1,
-            y: { times: [0.1, 0.2, 0.3, 0.4, 0.5 ,0.6, 0.7] } // control timing of y keyframes
+            ease: "easeOut", 
             }}
             className="absolute top-1/2 left-1/2 text-5xl text-red-600 z-50"
             onAnimationComplete={attackAnimation.onHit}
@@ -120,7 +124,7 @@ const BattleScene = ({enemy ,setEnemy}: BattleSceneProps) => {
             <img className='w-15'  src={user[0].inventory.weapon.img}></img>
         </motion.div>
         )}
-      </AnimatePresence>
+      
     </div>
   )
 }

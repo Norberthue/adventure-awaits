@@ -44,7 +44,7 @@ router.post('/register', async (req, res) => {
         inventory: {
           weapon: {
             name: 'Wooden Sword',
-            img: './public/assets/weapons/Icon28_16.png',
+            img: './assets/weapons/Icon28_16.png',
           }
       }, 
     }

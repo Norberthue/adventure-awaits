@@ -113,12 +113,14 @@ export const makeEnemies = (p_lvl: number): Enemies[] => {
             name = enemyNames[Math.floor(Math.random() * enemyNames.length)];
         } while (usedNames.includes(name));
 
+        let wNum: number;
         const enemy = {
             name,
             level,
             hp,
             maxHp: hp,
             image: `/assets/enemies/con${imgNum}.png`, 
+            weapon: `/assets/weapons/Icon28${wNum}.png`, 
             classType,
             intelligence: intelligence(classType),
             damage: damage(classType),

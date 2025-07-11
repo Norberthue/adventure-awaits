@@ -4,6 +4,7 @@ export interface Enemies {
   name: string;
   classType: ClassType;
   image: string;
+  weapon: string
   level: number;
   hp: number;
   maxHp: number;
